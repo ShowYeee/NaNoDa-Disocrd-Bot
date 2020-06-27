@@ -45,5 +45,5 @@ module.exports = {
 ```
 
 ## Refrence
-* [Node.js](https://discord.js.org/#/)
+* [Discord.js](https://discord.js.org/#/)
 * [FFmpeg](https://ffmpeg.org/)
