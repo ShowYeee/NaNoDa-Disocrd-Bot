@@ -5,6 +5,12 @@ const {
 	token
 } = require('./config.json');
 
+
+//remove this code if you don't want deploy on Heroku
+prefix = process.env.PREFIX;
+token = process.env.TOKEN;
+
+
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 
@@ -49,4 +55,4 @@ client.on('message', message => {
 });
 
 
-client.login(token);
+client.login(process.env.TOKEN);
