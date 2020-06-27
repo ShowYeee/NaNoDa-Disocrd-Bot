@@ -1,0 +1,27 @@
+{
+  "name": "nanoda",
+  "version": "1.0.0",
+  "description": "Dynamic load command bot",
+  "main": "bot.js",
+  "dependencies": {
+    "discord.js": "^12.2.0",
+    "opusscript": "^0.0.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node bot.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShowYeee/NaNoDa.git"
+  },
+  "keywords": [
+    "discord.js"
+  ],
+  "author": "ShowYeee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ShowYeee/NaNoDa/issues"
+  },
+  "homepage": "https://github.com/ShowYeee/NaNoDa#readme"
+}
