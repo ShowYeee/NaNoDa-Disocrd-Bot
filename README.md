@@ -15,7 +15,16 @@ npm install
 
 ## Usage
 
-First open config.js, set prefix and your bot token
+### Use local config
+
+Open bot.js and remove these code
+
+```node.js
+prefix = process.env.PREFIX;
+token = process.env.TOKEN;
+```
+
+Open config.js, set prefix and your bot token
 
 ```json
 {
@@ -28,6 +37,12 @@ Then you can run NaNoDa
 ```bash
 node bot.js
 ```
+
+### Deploy on Heroku
+You need add these env
+* TOKEN
+* PREFIX
+
 
 ## How to create commands
 * Create a folder in the "/commands/" path
