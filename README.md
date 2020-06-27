@@ -39,6 +39,7 @@ node bot.js
 ```
 
 ### Deploy on Heroku
+Add heroku-buildpack-ffmpeg-latest buildpack https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git
 You need add these env
 * TOKEN
 * PREFIX
