@@ -10,7 +10,7 @@ module.exports = {
             message.channel.send(attachment);
         }else{
             var rng = require("../../fun/rngimage.js");
-            var attachment = new Discord.MessageAttachment(rng.rngimage('5brides'));
+            var attachment = new Discord.MessageAttachment(rng.rngimage('5brides', 'jpg'));
             message.channel.send(attachment);
         }
 	},

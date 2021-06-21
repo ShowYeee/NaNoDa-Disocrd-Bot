@@ -3,7 +3,7 @@ module.exports = {
 	description: 'sv占卜',
 	execute(message,Discord) {
 		var rng = require("../../fun/rngimage.js");
-        var attachment = new Discord.MessageAttachment(rng.rngimage('sv'));
+        var attachment = new Discord.MessageAttachment(rng.rngimage('sv','jpg'));
         message.channel.send(attachment); 
 	},
 };

@@ -3,7 +3,7 @@ module.exports = {
 	description: '中華一番占卜',
 	execute(message,Discord) {
 		var rng = require("../../fun/rngimage.js");
-        var attachment = new Discord.MessageAttachment(rng.rngimage('cheef'));
+        var attachment = new Discord.MessageAttachment(rng.rngimage('cheef','jpg'));
         message.channel.send(attachment); 
 	},
 };

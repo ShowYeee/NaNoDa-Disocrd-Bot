@@ -3,7 +3,7 @@ module.exports = {
 	description: '晚安noda',
 	execute(message,Discord) {
 		var rng = require("../../fun/rngimage.js");
-        var attachment = new Discord.MessageAttachment(rng.rngimage('goodnight'));
+        var attachment = new Discord.MessageAttachment(rng.rngimage('goodnight','jpg'));
         message.channel.send(attachment); 
 	},
 };
