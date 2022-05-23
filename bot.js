@@ -6,9 +6,9 @@ var {
 } = require('./config.json');
 
 
-//remove this code if you don't want deploy on Heroku
-prefix = process.env.PREFIX;
-token = process.env.TOKEN;
+// Uncomment this code if you don't want deploy on Heroku
+// prefix = process.env.PREFIX;
+// token = process.env.TOKEN;
 
 
 const client = new Discord.Client();
