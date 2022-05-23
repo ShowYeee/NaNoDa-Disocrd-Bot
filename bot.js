@@ -6,7 +6,7 @@ var {
 } = require('./config.json');
 
 
-// Uncomment this code if you don't want deploy on Heroku
+// Uncomment this code if you want deploy on Heroku
 // prefix = process.env.PREFIX;
 // token = process.env.TOKEN;
 
