@@ -7,8 +7,8 @@ var {
 
 
 // Uncomment this code if you want deploy on Heroku
-// prefix = process.env.PREFIX;
-// token = process.env.TOKEN;
+prefix = process.env.PREFIX;
+token = process.env.TOKEN;
 
 
 const client = new Discord.Client();
