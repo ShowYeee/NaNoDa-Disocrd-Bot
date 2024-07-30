@@ -7,6 +7,10 @@ module.exports = {
     .setDescription("貓咪占卜"),
 
   async execute(interaction) {
-    await rngImgMsg(interaction, "cat");
+    if (Math.random() <= 0.2) {
+      await rngImgMsg(interaction, "cat/cat");
+    } else {
+      await rngImgMsg(interaction, "cat/chihuahua");
+    }
   },
 };
