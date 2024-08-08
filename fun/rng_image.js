@@ -54,9 +54,16 @@ function rngPath(pathName) {
  * @param {string} msg 機器人回傳訊息，如果是 null 則否
  */
 async function rngImgMsg(interaction, name, msg = null) {
-  const filePath = rngPath(name);
-  const attachment = new AttachmentBuilder(filePath);
-  await interaction.reply({ content: msg, files: [attachment] });
+  return new Promise(async (resolve, reject) => {
+    const filePath = rngPath(name);
+    const attachment = new AttachmentBuilder(filePath);
+    const message = await interaction.reply({
+      content: msg,
+      files: [attachment],
+      fetchReply: true,
+    });
+    resolve(message);
+  });
 }
 
 module.exports = {
