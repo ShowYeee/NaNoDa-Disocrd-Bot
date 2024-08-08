@@ -40,21 +40,6 @@ function getReport(userId) {
   });
 }
 
-function getTop10Records(userId) {
-    return new Promise((resolve, reject) => {
-      db.all(
-        "SELECT user_id, type, COUNT(*) as count FROM cat_record WHERE user_id = ?  GROUP BY type LIMIT 10",
-        [userId],
-        (err, rows) => {
-          if (err) {
-            return reject(err);
-          }
-          resolve(rows);
-        }
-      );
-    });
-  }
-
 // 獲取總抽卡次數函數
 function getTotalDraws() {
   return new Promise((resolve, reject) => {
@@ -71,5 +56,4 @@ module.exports = {
   addRecord,
   getReport,
   getTotalDraws,
-  getTop10Records,
 };
