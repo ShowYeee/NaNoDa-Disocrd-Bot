@@ -8,8 +8,10 @@ module.exports = {
 
   async execute(interaction, args) {
     const user_id = interaction.author.id;
-    const report = await catReport.getReport(user_id);
-    const total = await catReport.getTotalDraws(user_id);
+    const guild_id = interaction.guildId;
+    
+    const report = await catReport.getReport(user_id, guild_id);
+    const total = await catReport.getTotalDraws(user_id, guild_id);
 
     if (!(total > 0))return interaction.reply("您還沒有任何占卜資料");
 
@@ -29,14 +31,17 @@ module.exports = {
       { name: "吉娃娃比例", value: `${g_percentage}%`, inline: true },
       { name: "\u200B", value: " ", inline: true },
     ];
+    console.log(interaction.author.avatarURL());
 
+    const name = interaction.member.nickname || interaction.member.user.username;
+    const avatarURL =interaction.member.avatarURL() || interaction.author.avatarURL();
     const exampleEmbed = new EmbedBuilder()
       .setColor(0x1abc9c) // 使用較亮的顏色
-      .setTitle(`貓咪占卜統計`)
-      .setThumbnail(interaction.member.avatarURL())
+      .setTitle(`貓咪占卜統計 (Beta)`)
+      .setThumbnail(avatarURL)
       .setAuthor({
-        name: interaction.member.nickname || interaction.member.user.username,
-        iconURL: interaction.member.avatarURL(),
+        name: name,
+        iconURL: avatarURL,
       })
       .addFields(fields)
       .setFooter({
