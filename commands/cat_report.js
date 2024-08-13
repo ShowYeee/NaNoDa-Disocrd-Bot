@@ -8,8 +8,10 @@ module.exports = {
 
   async execute(interaction, args) {
     const user_id = interaction.author.id;
-    const report = await catReport.getReport(user_id);
-    const total = await catReport.getTotalDraws(user_id);
+    const guild_id = interaction.guildId;
+    
+    const report = await catReport.getReport(user_id, guild_id);
+    const total = await catReport.getTotalDraws(user_id, guild_id);
 
     if (!(total > 0))return interaction.reply("您還沒有任何占卜資料");
 
