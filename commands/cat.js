@@ -3,6 +3,7 @@ const { rngImgMsg } = require("../fun/rng_image");
 const catReport = require("../fun/cat_report.js");
 
 module.exports = {
+  cooldown: 130,
   data: new SlashCommandBuilder()
     .setName("貓咪占卜")
     .setDescription("貓咪占卜"),

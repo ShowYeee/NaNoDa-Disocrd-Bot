@@ -41,14 +41,18 @@ function getReport(userId) {
 }
 
 // 獲取總抽卡次數函數
-function getTotalDraws() {
+function getTotalDraws(userId) {
   return new Promise((resolve, reject) => {
-    db.get("SELECT COUNT(*) as total_draws FROM cat_record", [], (err, row) => {
-      if (err) {
-        return reject(err);
+    db.get(
+      "SELECT COUNT(*) as total_draws FROM cat_record WHERE user_id = ?",
+      [userId],
+      (err, row) => {
+        if (err) {
+          return reject(err);
+        }
+        resolve(row.total_draws);
       }
-      resolve(row.total_draws);
-    });
+    );
   });
 }
 
