@@ -59,11 +59,15 @@ function getTotalDraws(userId, guildId) {
 // 檢查今天是否已經有指定 userId 的資料
 function hasRecordToday(userId, guildId) {
   return new Promise((resolve, reject) => {
-    const today = new Date().toISOString().split("T")[0]; // 取得今天的日期
+    // 取得當前 UTC+8 的日期
+    const now = new Date();
+    const utc8Time = new Date(now.getTime() + 8 * 60 * 60 * 1000);
+    const today = utc8Time.toISOString().split("T")[0]; // 格式化為 'YYYY-MM-DD'
+
     db.get(
       `SELECT COUNT(*) as count FROM cat_record 
-       WHERE user_id = ? AND DATE(draw_time) = ? AND guild_id = ?`,
-      [userId, today, guildId],
+       WHERE user_id = ? AND guild_id = ? AND DATE(draw_time, 'localtime') = ?`,
+      [userId, guildId, today],
       (err, row) => {
         if (err) {
           return reject(err);
