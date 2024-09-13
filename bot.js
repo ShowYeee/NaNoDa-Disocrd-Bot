@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+require('dotenv').config();
 const {
   Client,
   GatewayIntentBits,
@@ -7,7 +8,10 @@ const {
   Collection,
   Events,
 } = require("discord.js");
-const { prefix, token, message_cd_default } = require("./config.json");
+
+const prefix = process.env.PREFIX;
+const token = process.env.TOKEN;
+const message_cd_default = process.env.MESSAGE_CD_DEFAULT;
 
 const client = new Client({
   intents: [
