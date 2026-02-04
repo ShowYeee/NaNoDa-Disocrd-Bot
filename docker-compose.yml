@@ -1,8 +1,10 @@
 services:
   discord-bot:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nanoda-bot
     restart: unless-stopped
     env_file:
       - .env
-      
     init: true
