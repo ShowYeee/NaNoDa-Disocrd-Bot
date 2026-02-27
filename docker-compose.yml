@@ -1,10 +1,39 @@
 services:
+  mysql:
+    image: mysql:8.4
+    container_name: nanoda-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: nanoda
+      MYSQL_USER: nanoda
+      MYSQL_PASSWORD: nanoda_pass
+      MYSQL_ROOT_PASSWORD: root_pass_change_me
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot_pass_change_me"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
   discord-bot:
     build:
       context: .
       dockerfile: Dockerfile
     container_name: nanoda-bot
     restart: unless-stopped
-    env_file:
-      - .env
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_USER: nanoda
+      DB_PASSWORD: nanoda_pass
+      DB_NAME: nanoda
+    volumes:
+      - ./config/config.json:/app/config/config.json:ro
     init: true
+
+volumes:
+  mysql_data:

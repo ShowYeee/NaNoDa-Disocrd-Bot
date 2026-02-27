@@ -14,7 +14,7 @@ COPY package*.json ./
 RUN npm ci --omit=dev
 
 COPY . .
-RUN chmod +x scripts/start.sh
+RUN sed -i 's/\r$//' scripts/start.sh && chmod +x scripts/start.sh
 USER app
 ENV NODE_ENV=production
 CMD ["./scripts/start.sh"]

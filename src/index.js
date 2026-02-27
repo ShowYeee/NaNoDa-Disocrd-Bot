@@ -1,6 +1,5 @@
 const fs = require("fs");
 const path = require("path");
-require('dotenv').config();
 const {
   Client,
   GatewayIntentBits,
@@ -9,10 +8,17 @@ const {
   Events,
 } = require("discord.js");
 const logger = require("./utils/logger");
+const { loadConfig } = require("./utils/config");
 
-const prefix = process.env.PREFIX;
-const token = process.env.TOKEN;
-const message_cd_default = process.env.MESSAGE_CD_DEFAULT;
+const config = loadConfig();
+const prefix = config.PREFIX || "!";
+const token = config.TOKEN;
+const message_cd_default = Number(config.MESSAGE_CD_DEFAULT ?? 1);
+
+if (!token || String(token).trim() === "") {
+  logger.error("找不到 TOKEN，請確認 config/config.json 已設定 TOKEN。");
+  process.exit(1);
+}
 
 const client = new Client({
   intents: [

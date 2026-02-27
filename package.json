@@ -9,13 +9,14 @@
     "discord.js": "^14.15.3",
     "dotenv": "^16.4.5",
     "ffmpeg-static": "^5.2.0",
-    "opusscript": "^0.0.7",
-    "sqlite3": "^5.1.7"
+    "mysql2": "^3.11.3",
+    "opusscript": "^0.0.7"
   },
   "scripts": {
     "test": "node src/index.js",
     "start": "node src/index.js",
-    "deploy": "node scripts/deploy-commands.js"
+    "deploy": "node scripts/deploy-commands.js",
+    "migrate:create-cat-record": "node scripts/migrate-create-cat-record.js"
   },
   "repository": {
     "type": "git",

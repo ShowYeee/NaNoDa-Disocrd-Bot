@@ -1,10 +1,15 @@
 #!/bin/bash
 
-# 註冊斜線指令（deploy-commands.js 會使用 logger 輸出格式化的日誌）
-if ! node scripts/deploy-commands.js; then
-  # 如果註冊失敗，使用簡單的錯誤訊息（因為 logger 可能無法使用）
-  echo "警告: 斜線指令註冊失敗，但將繼續啟動機器人" >&2
+# Run DB migration first; stop startup if it fails.
+if ! npm run migrate:create-cat-record; then
+  echo "Error: migration failed, abort startup" >&2
+  exit 1
 fi
 
-# 啟動機器人（src/index.js 會使用 logger 輸出格式化的日誌）
+# Deploy slash commands; do not block bot startup on deploy failure.
+if ! node scripts/deploy-commands.js; then
+  echo "Warning: slash command deploy failed, continuing bot startup" >&2
+fi
+
+# Start bot process.
 exec node src/index.js

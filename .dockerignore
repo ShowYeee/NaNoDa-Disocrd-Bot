@@ -3,5 +3,6 @@ npm-debug.log
 Dockerfile
 docker-compose.yml
 .env
+config/config.json
 .git
 .gitignore
